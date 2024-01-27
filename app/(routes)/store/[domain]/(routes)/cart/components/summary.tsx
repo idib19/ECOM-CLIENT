@@ -75,7 +75,7 @@ const Summary = () => {
         const productIds = items.map((item) => item.id);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkoutEmail`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/currenntstoreId/checkoutEmail`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const Summary = () => {
             if (response.ok) {
                 removeAll();
                 toast.success('Commande effectuée avec succès');
-                router.push(`${process.env.NEXT_PUBLIC_STORE_URL}`)
+                router.push(`${process.env.NEXT_PUBLIC_STORE_URL}/setan-style`)
             } else {
                 console.error('Error during checkout:', response.statusText);
             }

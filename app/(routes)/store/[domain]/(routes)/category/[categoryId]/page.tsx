@@ -20,6 +20,7 @@ export const revalidate = 0;
 interface CategoryPageProps {
     params: {
         categoryId: string
+        storeId: string 
     },
 
     searchParams: {
@@ -34,6 +35,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({ params, searchParams 
         categoryId: params.categoryId,
         colorId: searchParams.colorId,
         sizeId: searchParams.sizeId,
+        storeId:params.storeId
     });
     const category = await getCategory(params.categoryId);
     const sizes = await getSizes();

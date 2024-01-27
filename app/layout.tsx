@@ -17,18 +17,14 @@ export const metadata: Metadata = {
   description: 'Store',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function RootLayout({children , params}:{ children: React.ReactNode, params:  {domain: string}}) {
   return (
     <html lang="en">
 
       <body className={font.className}>
         <ToastProvider />
         <ModalProvider />
-        <Navbar />
+        
         {children}
         <Footer />
 
