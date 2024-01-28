@@ -13,19 +13,20 @@ const Navbar = async ({ params }: { params: { domain: string } }) => {
 
     const domain = params.domain
     
-    console.log("navbar domain: ", domain)
+    
 
     let storeId = ''
     let storeName = ''
+
     if (domain === 'setan-style') {
-        storeId = "5601a131-affb-4108-9135-38450c4918d0"
+        storeId = "71d739cd-e561-4065-932c-54df80972872"
         storeName = 'SETAN STYLE'
-        console.log("setant style name : ", storeName)
+       
     }
     if (domain === 'ihm') {
-        storeId = "71d739cd-e561-4065-932c-54df80972872"
+        storeId = "IHMSTOREID"
         storeName = 'IHM'
-        console.log("IHM name : ", storeName)
+       
     }
 
     const categories = await getCategories(storeId);

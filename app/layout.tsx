@@ -1,3 +1,4 @@
+
 import { Urbanist } from 'next/font/google'
 
 import type { Metadata } from 'next'
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({children , params}:{ children: React.ReactNode, params:  {domain: string}}) {
+
+
+  
+
   return (
     <html lang="en">
 
