@@ -1,9 +1,8 @@
-
+import { ClerkProvider } from '@clerk/nextjs'
 import { Urbanist } from 'next/font/google'
 
 import type { Metadata } from 'next'
 import ToastProvider from '@/provider/toast-provider'
-import Navbar from '@/components/ui/navbar/navbar'
 import Footer from '@/components/footer'
 
 import './globals.css'
@@ -18,23 +17,28 @@ export const metadata: Metadata = {
   description: 'Store',
 }
 
-export default async function RootLayout({children , params}:{ children: React.ReactNode, params:  {domain: string}}) {
+export default async function RootLayout({ children, params }: { children: React.ReactNode, params: { domain: string } }) {
 
 
-  
+
 
   return (
-    <html lang="en">
 
-      <body className={font.className}>
-        <ToastProvider />
-        <ModalProvider />
-        
-        {children}
-        <Footer />
+    <ClerkProvider>
+      <html lang="en">
 
-      </body>
+        <body className={font.className}>
+          <ToastProvider />
+          <ModalProvider />
 
-    </html>
+          {children}
+          
+          <Footer />
+
+        </body>
+
+      </html>
+    </ClerkProvider>
+
   )
 }
