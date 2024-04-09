@@ -31,7 +31,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             <div className="flex flex-col gap-y-6">
                 <div className="flex items-center gap-x-4">
                     {/* Sizes here should be a list of all available sizes from wich the client can choose from and gets attached to his order on the admin side*/}
-                    <h3 className="font-semibold text-black">Size:</h3>
+                    <h3 className="font-semibold text-black">Taille:</h3>
                     <div>
                         {data?.size?.value}
                     </div>
@@ -43,7 +43,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             </div>
             <div className="mt-10 flex items-center gap-x-3">
                 <Button onClick={onAddToCart} className="flex items-center gap-x-2">
-                    Add To Cart
+                    Ajouter au panier
                     <ShoppingCart size={20} />
                 </Button>
             </div>

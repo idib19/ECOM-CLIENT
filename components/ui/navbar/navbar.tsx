@@ -12,6 +12,7 @@ export const revalidate = 0;
 const Navbar = async () => {
     const categories = await getCategories();
 
+    console.log('liste of categories fetched: ', categories)
     return (
         <div className="border-b">
             <Container>

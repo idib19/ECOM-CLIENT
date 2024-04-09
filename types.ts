@@ -9,6 +9,20 @@ export interface Product {
     images: Image[]
 };
 
+export interface Order {
+    id: string;
+    isPaid: boolean;
+    clientId: string;
+    name: string;
+    phone: string;
+    email: string;
+    address: string;
+    status : string;
+    createdAt: string;
+    updatedAt: string;
+};
+
+
 export interface Image {
     id: string;
     url: string;
