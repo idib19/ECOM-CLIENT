@@ -11,6 +11,7 @@ export default async function OrdersPage() {
     // Upon receiving the order data, use JavaScript's sorting methods (e.g., Array.prototype.sort) to sort the order array by the createdAt property in descending order.
     // This might be suitable for a small number of orders.
 
+   
     return (
 
         <OrdersPageClient  data= {orders}/>
