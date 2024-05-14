@@ -6,6 +6,8 @@ const CartPage = async () => {
 
 const {userId} = auth();
 
+console.log( "userId ", userId);
+
 
     return (
         <CartPageClient data = {userId} />

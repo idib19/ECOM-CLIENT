@@ -1,9 +1,9 @@
 import { Order } from "@/types";
-
+import { OrderDetails } from "@/types";
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
 
 
-const getOrders = async (userId : string | null): Promise<Order[]> => {
+export const getUserOrders = async (userId : string | null): Promise<Order[]> => {
     
         const res = await fetch(URL, {
             method: 'POST',
@@ -15,4 +15,12 @@ const getOrders = async (userId : string | null): Promise<Order[]> => {
     
 };
 
-export default getOrders;
+
+export const getSpecificOrder = async (orderId : string | null): Promise<OrderDetails> => {
+    
+    const res = await fetch(`${URL}/${orderId}`);
+
+    return res.json();
+
+};
+

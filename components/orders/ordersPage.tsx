@@ -1,5 +1,7 @@
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { Order } from "@/types"
+import Link from "next/link"
+
 
 interface OrderPageProps {
     data: Order[]
@@ -9,7 +11,7 @@ interface OrderPageProps {
 const OrdersList: React.FC<OrderPageProps> = ({ data }) => {
 
     // fetch order details
-
+    console.log("les commandes retenus :", data)
     return (
         <div >
             {data.map((order) => (
@@ -31,9 +33,9 @@ const OrdersList: React.FC<OrderPageProps> = ({ data }) => {
                         </div>
                     </CardContent>
                     <div className="flex justify-center mb-2"> {/* Center the button */}
-                        <button className="bg-black text-white px-4 py-2 rounded-md w-full mx-1">
+                        <Link className="bg-black text-white px-4 py-2 rounded-md w-full mx-1" href={`/orders/${order.id}`}>
                             Details
-                        </button>
+                        </Link>
                     </div>
                 </Card>
             ))}

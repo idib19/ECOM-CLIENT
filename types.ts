@@ -22,6 +22,41 @@ export interface Order {
     updatedAt: string;
 };
 
+export interface OrderDetails {
+    order: {
+        id: string;
+        storeId: string;
+        isPaid: boolean;
+        name: string;
+        phone: string;
+        email: string;
+        address: string;
+        createdAt: Date;
+        updatedAt: Date;
+        clientId: string;
+        orderItems: {
+            id: string;
+            product: {
+                id: string;
+                storeId: string;
+                categoryId: string;
+                name: string;
+                price: any;
+                isFeatured: boolean;
+                isArchived: boolean;
+                sizeId: string;
+                colorId: string;
+                createdAt: Date;
+                updatedAt: Date;
+                images: {
+                    id: string;
+                    url: string;
+                }[];
+            };
+            quantity: any;
+        }[];
+    } | null;
+}
 
 export interface Image {
     id: string;

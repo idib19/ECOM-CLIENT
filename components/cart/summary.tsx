@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-import { auth } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs"; // client compoenents 
+
 
 // form importssssssss -------------------------------------------------------//////
 import * as z from "zod"
@@ -33,7 +34,7 @@ import { AlertModal } from "@/components/login-alert-modal";
 
 
 
-const Summary = ( data : any ) => {
+const Summary = (data: any) => {
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ const Summary = ( data : any ) => {
 
     const router = useRouter();
 
-    const userId = data.userId
+    const { isSignedIn, userId, } = useAuth()
 
     useEffect(() => {
         if (searchParams.get('success')) {
@@ -78,13 +79,14 @@ const Summary = ( data : any ) => {
         resolver: zodResolver(formSchema)
     });
 
-    const onCheckout = async (data: OrderFormValues) => {
-        
-        console.log(userId);
-        
-        if (userId) {
-            const productIds = items.map((item) => item.id);
 
+    console.log("userId ", userId);
+
+
+    const onCheckout = async (data: OrderFormValues) => {
+
+        const productIds = items.map((item) => item.id);
+        if (isSignedIn) {
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkoutEmail`, {
                     method: 'POST',
@@ -127,6 +129,8 @@ const Summary = ( data : any ) => {
 
     //-------------------------------------------------------------------------------
     return (
+
+
         <>
             <AlertModal
                 isOpen={open}
