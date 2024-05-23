@@ -23,7 +23,6 @@ export interface Order {
 };
 
 export interface OrderDetails {
-    order: {
         id: string;
         storeId: string;
         isPaid: boolean;
@@ -55,7 +54,7 @@ export interface OrderDetails {
             };
             quantity: any;
         }[];
-    } | null;
+
 }
 
 export interface Image {
