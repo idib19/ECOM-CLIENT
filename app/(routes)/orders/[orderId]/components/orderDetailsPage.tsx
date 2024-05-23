@@ -2,53 +2,23 @@
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
+import { OrderDetails } from "@/types"
 
 
 
 interface OrderDetailsProps {
-    order: {
-        id: string;
-        storeId: string;
-        isPaid: boolean;
-        name: string;
-        phone: string;
-        email: string;
-        address: string;
-        createdAt: Date;
-        updatedAt: Date;
-        clientId: string;
-        orderItems: {
-            id: string;
-            product: {
-                id: string;
-                storeId: string;
-                categoryId: string;
-                name: string;
-                price: any;
-                isFeatured: boolean;
-                isArchived: boolean;
-                sizeId: string;
-                colorId: string;
-                createdAt: Date;
-                updatedAt: Date;
-                images: {
-                    id: string;
-                    url: string;
-                }[];
-            };
-            quantity: any;
-        }[];
-    } | null;
+    order: OrderDetails
 }
 
 
 
 
-export const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
+export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => {
 
     // Calculate total cost using reduce()
     const totalCost = 0 ; 
 
+    console.log(`order data received in the client : ` + order )
     return (
         <main className="flex flex-col gap-8 p-4 md:p-6">
             <div className="flex items-center gap-4">

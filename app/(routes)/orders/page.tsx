@@ -6,7 +6,6 @@ export default async function OrdersPage() {
     const { userId } = auth();
 
 
-    console.log("idUser:  ", userId)
     const orders = await getUserOrders(userId);
 
     // Upon receiving the order data, use JavaScript's sorting methods (e.g., Array.prototype.sort) to sort the order array by the createdAt property in descending order.

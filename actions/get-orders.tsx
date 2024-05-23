@@ -18,9 +18,17 @@ export const getUserOrders = async (userId : string | null): Promise<Order[]> =>
 
 export const getSpecificOrder = async (orderId : string | null): Promise<OrderDetails> => {
     
-    const res = await fetch(`${URL}/${orderId}`);
+     
+    const res = await fetch(`${URL}/${orderId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
 
-    return res.json();
+    // Parse the JSON response
+    const data = await res.json();
+
+    // Assert the type of the data
+    return data as OrderDetails;
 
 };
 
