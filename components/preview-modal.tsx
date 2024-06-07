@@ -6,7 +6,7 @@ import Info from "@/components/info";
 import Modal from "@/components/ui/modal";
 
 
-const PreviewModal = () => {
+const ProductPreviewModal = () => {
     const previewModal = usePreviewModal();
     const product = usePreviewModal((state) => state.data);
 
@@ -31,4 +31,4 @@ const PreviewModal = () => {
     );
 }
 
-export default PreviewModal;
+export default ProductPreviewModal;
