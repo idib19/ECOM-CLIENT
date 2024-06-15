@@ -30,6 +30,7 @@ import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
 
 import { AlertModal } from "@/components/login-alert-modal";
+import { CartItems } from "@/types";
 
 
 
@@ -60,7 +61,7 @@ const Summary = (data: any) => {
     }, [searchParams, removeAll]);
 
     const totalPrice = items.reduce((total, item) => {
-        return total + Number(item.price)
+        return total + Number(item.product.price)
     }, 0);
 
 
@@ -85,7 +86,11 @@ const Summary = (data: any) => {
 
     const onCheckout = async (data: OrderFormValues) => {
 
-        const productIds = items.map((item) => item.id);
+        const orderItemsData = items.map((item: CartItems) => ({
+            productId: item.product.id,
+            options: item.option
+        }));
+
         if (isSignedIn) {
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkoutEmail`, {
@@ -94,7 +99,7 @@ const Summary = (data: any) => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        productIds: productIds,
+                        orderItemsData: orderItemsData,
                         data,
                         clientId: userId
                     }),
@@ -106,13 +111,17 @@ const Summary = (data: any) => {
                     removeAll();
                     toast.success('Commande effectuée avec succès!');
                     router.push(`${process.env.NEXT_PUBLIC_STORE_URL}`)
+
                 } else {
-                    console.error('Error during checkout:', response.statusText);
+                    const errorData = await response.json();
+                    console.error('Error during checkout:', response.statusText, errorData);
+                    toast.error('Erreur lors du paiement, veuillez réessayer.');
                 }
 
 
             } catch (error) {
-                console.error('Error during checkout:', error);
+                console.error('Network error during checkout:', error);
+                toast.error('Erreur réseau lors du paiement, veuillez réessayer.');
             }
         }
 

@@ -12,6 +12,7 @@ export const revalidate = 0;
 
 const CartPageClient = (data : any) => {
     const [isMounted, setIsMounted] = useState(false);
+    //
     const cart = useCart();
 
     const userId = data.userId
@@ -34,7 +35,7 @@ const CartPageClient = (data : any) => {
                             {cart.items.length === 0 && <p className="text-neutral-500">Le panier est vide</p>}
                             <ul>
                                 {cart.items.map((item) => (
-                                    <CartItem key={item.id} data={item} />
+                                    <CartItem key={item.product.id} data={item} />
                                 ))}
                             </ul>
                         </div>

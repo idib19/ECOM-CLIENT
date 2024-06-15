@@ -1,15 +1,14 @@
 import Image from "next/image";
-import { toast } from "react-hot-toast";
 import { X } from "lucide-react";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import { Product } from "@/types";
+import {CartItems } from "@/types";
 
 
 interface CartItemProps {
-    data: Product;
+    data: CartItems;
 }
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -18,7 +17,7 @@ const CartItem: React.FC<CartItemProps> = ({
     const cart = useCart();
 
     const onRemove = () => {
-        cart.removeItem(data.id);
+        cart.removeItem(data.product.id);
     };
 
     return (
@@ -26,7 +25,7 @@ const CartItem: React.FC<CartItemProps> = ({
             <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
                 <Image
                     fill
-                    src={data.images[0].url}
+                    src={data.product.images[0].url}
                     alt=""
                     className="object-cover object-center"
                 />
@@ -38,15 +37,15 @@ const CartItem: React.FC<CartItemProps> = ({
                 <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                     <div className="flex justify-between">
                         <div className=" text-lg font-semibold text-black">
-                            {data.name}
+                            {data.product.name}
                         </div>
                     </div>
 
                     <div className="mt-1 flex text-sm">
-                        <p className="text-gray-500">{data.color.name}</p>
-                        <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{data.size.name}</p>
+                        <p className="text-gray-500">{data.option.color}</p>
+                        <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{data.option.size}</p>
                     </div>
-                    <Currency value={data.price} />
+                    <Currency value={data.product.price} />
                 </div>
             </div>
         </li>

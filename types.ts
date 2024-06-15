@@ -8,6 +8,16 @@ export interface Product {
     color: Color;
     images: Image[]
 };
+// Product variant object spec
+export interface Options {
+    size: string;
+    color: string;
+}
+
+export interface CartItems {
+    product: Product;
+    option: Options;
+}
 
 export interface Order {
     id: string;
@@ -17,43 +27,43 @@ export interface Order {
     phone: string;
     email: string;
     address: string;
-    status : string;
+    status: string;
     createdAt: string;
     updatedAt: string;
 };
 
 export interface OrderDetails {
+    id: string;
+    storeId: string;
+    isPaid: boolean;
+    name: string;
+    phone: string;
+    email: string;
+    address: string;
+    createdAt: Date;
+    updatedAt: Date;
+    clientId: string;
+    orderItems: {
         id: string;
-        storeId: string;
-        isPaid: boolean;
-        name: string;
-        phone: string;
-        email: string;
-        address: string;
-        createdAt: Date;
-        updatedAt: Date;
-        clientId: string;
-        orderItems: {
+        product: {
             id: string;
-            product: {
+            storeId: string;
+            categoryId: string;
+            name: string;
+            price: any;
+            isFeatured: boolean;
+            isArchived: boolean;
+            sizeId: string;
+            colorId: string;
+            createdAt: Date;
+            updatedAt: Date;
+            images: {
                 id: string;
-                storeId: string;
-                categoryId: string;
-                name: string;
-                price: any;
-                isFeatured: boolean;
-                isArchived: boolean;
-                sizeId: string;
-                colorId: string;
-                createdAt: Date;
-                updatedAt: Date;
-                images: {
-                    id: string;
-                    url: string;
-                }[];
-            };
-            quantity: any;
-        }[];
+                url: string;
+            }[];
+        };
+        quantity: any;
+    }[];
 
 }
 

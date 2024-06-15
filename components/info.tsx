@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
-import { Product } from "@/types";
+import { Product, Options } from "@/types";
 
 import useCart from "@/hooks/use-cart";
 import Currency from "@/components/ui/currency";
@@ -15,29 +15,40 @@ interface InfoProps {
 };
 
 const Info: React.FC<InfoProps> = ({ data }) => {
+    // cart data 
+    const cart = useCart();
 
+
+    // static attributes : colors and sizes 
 
     const availableSizes = ['S', 'M', 'L', 'XL'];
+    const availableColors = ['#FFFFFF', '#00FF00', '#0000FF', '#FFFF00']; // Example colors
+
+
+    // usestate and callback functions to handle selection 
     const [selectedSize, setSelectedSize] = useState<string>(availableSizes[0]);
     const handleSizeSelect = (size: string) => {
         setSelectedSize(size);
     };
 
-
-    const availableColors = ['#FFFFFF', '#00FF00', '#0000FF', '#FFFF00']; // Example colors
     const [selectedColor, setSelectedColor] = useState<string>(availableColors[0]);
-
     const handleColorSelect = (color: string) => {
         setSelectedColor(color);
     };
 
-
-
-    const cart = useCart();
-
-    const onAddToCart = () => {
-        cart.addItem(data);
+    //  options selection for the product 
+    const options : Options = {
+        size : selectedSize,
+        color : selectedColor
     }
+
+
+    
+    const onAddToCart = () => {
+        cart.addItem(data, options);
+    }
+
+    
 
     return (
         <div>
@@ -61,10 +72,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
                     selectedColor={selectedColor}
                     onSelectColor={handleColorSelect}
                 />
-                <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Color:</h3>
-                    <div className="h-6 w-6 rounded-full border border-gray-600" style={{ backgroundColor: data?.color?.value }} />
-                </div>
+                
             </div>
             <div className="mt-10 flex items-center gap-x-3">
                 <Button onClick={onAddToCart} className="flex items-center gap-x-2">

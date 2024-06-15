@@ -14,7 +14,7 @@ const ColorSelector: React.FC<ColorSelectorProps> = ({ colors, selectedColor, on
                 {colors.map((color) => (
                     <div
                         key={color}
-                        className={`h-6 w-6 rounded-full border ${color === selectedColor ? 'border-black' : 'border-gray-600'}`}
+                        className={`h-6 w-6 rounded-full border ${color === selectedColor ? 'border-black' : 'border-gray-300'}`}
                         style={{ backgroundColor: color }}
                         onClick={() => onSelectColor(color)}
                     />
