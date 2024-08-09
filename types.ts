@@ -96,3 +96,8 @@ export interface Color {
     value: string;
 };
 
+export interface Attributes {
+    id: string;
+    name: string;
+    value: string;
+};

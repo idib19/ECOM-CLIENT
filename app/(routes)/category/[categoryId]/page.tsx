@@ -2,9 +2,8 @@
 
 // useful functions import 
 import getCategory from "@/actions/get-category";
-import getColors from "@/actions/get-colors";
 import getProducts from "@/actions/get-products";
-import getSizes from "@/actions/get-sizes";
+import getAttributes from "@/actions/get-attributes";
 
 // Useful components import 
 import Billboard from "@/components/ui/billboard";
@@ -36,8 +35,35 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({ params, searchParams 
         sizeId: searchParams.sizeId,
     });
     const category = await getCategory(params.categoryId);
-    const sizes = await getSizes();
-    const colors = await getColors();
+
+    // attributes instead of zises and color 
+    // fetch the variant values available and pass them to sizes and colors 
+    // their is a better way to write this part of the app by letting the server do all the sorting and send arrays of all the available attributes 
+    interface AttributeValue {
+        id: string;
+        name: string;
+        value: string;
+      }
+      
+      const attributes: AttributeValue[] = await getAttributes();
+      
+      function separateAttributes(attributes: AttributeValue[]): { colors: AttributeValue[], sizes: AttributeValue[] } {
+        const colors: AttributeValue[] = [];
+        const sizes: AttributeValue[] = [];
+      
+        attributes.forEach(attribute => {
+          if (attribute.value.startsWith('#')) {
+            colors.push(attribute);
+          } else {
+            sizes.push(attribute);
+          }
+        });
+      
+        return { colors, sizes };
+      }
+      
+      const { colors, sizes } = separateAttributes(attributes);
+      
 
     return (
         <div className="bg-white">
