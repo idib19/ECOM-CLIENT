@@ -3,8 +3,7 @@
 import Link from "next/link";
 import MainNav from "@/components/ui/navbar/main-nav";
 import Container from "@/components/ui/container";
-import NavbarActions from "@/components/ui/navbar/navbar-actions";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { Category } from "@/types";
 
 export const revalidate = 0;
