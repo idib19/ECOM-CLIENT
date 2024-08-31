@@ -10,8 +10,6 @@ interface OrderPageProps {
 
 const OrdersList: React.FC<OrderPageProps> = ({ data }) => {
 
-    // fetch order details
-    console.log("les commandes retenus :", data)
     return (
         <div >
             {data.map((order) => (

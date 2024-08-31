@@ -11,7 +11,9 @@ export const getUserOrders = async (userId : string | null): Promise<Order[]> =>
             body: JSON.stringify({ userId: userId }),
         });
 
-        return res.json();
+        const orders = await res.json()
+
+        return orders;
     
 };
 

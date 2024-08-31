@@ -9,8 +9,6 @@ export default async function StoreLayout ({
 
 
     const categories = await getCategories()
-
-    console.log("voici les categories" + categories )
     
     return (
         <>

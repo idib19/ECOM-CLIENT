@@ -81,9 +81,6 @@ const Summary = (data: any) => {
     });
 
 
-    console.log("userId ", userId);
-
-
     const onCheckout = async (data: OrderFormValues) => {
 
         const orderItemsData = items.map((item: CartItems) => ({
@@ -92,6 +89,8 @@ const Summary = (data: any) => {
         }));
 
         if (isSignedIn) {
+
+            
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkoutEmail`, {
                     method: 'POST',
