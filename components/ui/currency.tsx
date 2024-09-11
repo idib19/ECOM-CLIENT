@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-const formatter = new Intl.NumberFormat('en-US', {
+const formatter = new  Intl.NumberFormat('fr-FR', {
     style: 'currency',
-    currency: 'USD',
-});
-
+    currency: 'EUR',
+    minimumFractionDigits: 2 // XOF generally doesn't use decimals
+  });
 interface CurrencyProps {
     value?: string | number;
 }
