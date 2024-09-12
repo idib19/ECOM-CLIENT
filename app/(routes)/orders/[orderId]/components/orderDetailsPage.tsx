@@ -3,7 +3,7 @@ import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
 import { OrderDetails } from "@/types"
-
+import Currency from "@/components/ui/currency"
 
 
 interface OrderDetailsProps {
@@ -11,14 +11,11 @@ interface OrderDetailsProps {
 }
 
 
-
-
-export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => {
+export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => { 
 
     // Calculate total cost using reduce()
-    const totalCost = 0 ; 
+    const totalCost = order?.orderItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
-    console.log(`order data received in the client : ` + order )
     return (
         <main className="flex flex-col gap-8 p-4 md:p-6">
             <div className="flex items-center gap-4">
@@ -58,8 +55,8 @@ export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => {
                                             </TableCell>
                                             <TableCell className="font-medium">{orderItem.product.name}</TableCell>
                                             <TableCell>{orderItem.quantity.toString()}</TableCell>
-                                            <TableCell>${orderItem.product.price.toString()}</TableCell>
-                                            <TableCell>${totalCost.toString()}</TableCell>
+                                            <TableCell><Currency value={orderItem.product.price} /></TableCell>
+                                            <TableCell><Currency value={orderItem.product.price * orderItem.quantity} /></TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
@@ -73,16 +70,16 @@ export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => {
                         <CardContent className="grid gap-4">
                             <div className="flex items-center">
                                 <div>Subtotal</div>
-                                <div className="ml-auto">${totalCost.toString()}</div>
+                                <div className="ml-auto"><Currency value={order.totalPrice} /></div>
                             </div>
                             <div className="flex items-center">
                                 <div>Discount</div>
-                                <div className="ml-auto">-$0.00</div>
+                                <div className="ml-auto"><Currency value={-0} /></div>
                             </div>
                             <Separator />
                             <div className="flex items-center font-medium">
                                 <div>Total</div>
-                                <div className="ml-auto">${totalCost.toString()}</div>
+                                <div className="ml-auto"><Currency value={order.totalPrice} /></div>
                             </div>
                         </CardContent>
                     </Card>

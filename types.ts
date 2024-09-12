@@ -30,6 +30,7 @@ export interface Order {
     status: string;
     createdAt: string;
     updatedAt: string;
+    totalPrice: number;
 };
 
 export interface OrderDetails {
@@ -63,8 +64,8 @@ export interface OrderDetails {
             }[];
         };
         quantity: any;
-    }[];
-
+    }[],
+    totalPrice: number;
 }
 
 export interface Image {
