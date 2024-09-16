@@ -1,5 +1,6 @@
 import getCategories from "@/actions/get-categories"
 import Navbar from "@/components/ui/navbar/navbar"
+import { categories } from "@/lib/statics";
 
 export default async function StoreLayout ({
     children,
@@ -7,12 +8,13 @@ export default async function StoreLayout ({
     children: React.ReactNode
   })  {
 
+    const categoryNames = categories.map(category => category.name);
 
-    const categories = await getCategories()
-    
+    // Convert names into the shape needed for your Navbar
+    const categoriesForNavbar : any = categoryNames.map(name => ({ name }));
     return (
         <>
-        <Navbar categories={categories} />
+         <Navbar categories={categoriesForNavbar} />
         {children}
         </>
         )

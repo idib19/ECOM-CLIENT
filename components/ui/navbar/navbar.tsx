@@ -5,6 +5,7 @@ import MainNav from "@/components/ui/navbar/main-nav";
 import Container from "@/components/ui/container";
 import {useState } from "react";
 import { Category } from "@/types";
+import { FaShoppingCart } from 'react-icons/fa';
 
 export const revalidate = 0;
 
@@ -58,7 +59,14 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
                     >
                         <MainNav data={categories} />
                     </div>
-                    {/* <NavbarActions /> */}
+                    
+                    <div className={" absolute right-14"}>
+                    <NavbarActions />
+                    </div>
+                    <div className={" absolute right-36"}>
+                    <FaShoppingCart size={24} /> 
+                    </div>
+                    
                 </div>
             </Container>
         </div>
