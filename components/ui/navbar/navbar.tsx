@@ -65,7 +65,7 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
                     <NavbarActions />
                     </div>
                     <div className={" absolute right-36"}>
-                    <FaShoppingCart size={24} /> {/* Adjust size as needed */}
+                    <FaShoppingCart size={24} /> 
                     </div>
                     
                 </div>
