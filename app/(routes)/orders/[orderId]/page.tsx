@@ -9,8 +9,6 @@ const OrderDetailsPageServer = async ({ params }: { params: { orderId: string } 
 
     const order = await getSpecificOrder(params.orderId);
 
-    console.log(`order fetched from server  : ` + order)
-
 
     return (
 

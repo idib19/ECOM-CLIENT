@@ -5,17 +5,18 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils"
 import { Category } from "@/types";
-import { categories } from "@/lib/statics";
+
 import NavbarActions from "./navbar-actions";
 
 
 interface MainNavProps {
-    data?: Category[];
+    data: Category[];
 }
 
 const MainNav: React.FC<MainNavProps> = ({
-    data = [...categories]
+    data
 }) => {
+
     const pathname = usePathname();
 
     const routes = data && data.map((route) => ({

@@ -1,8 +1,7 @@
 import { Urbanist } from 'next/font/google'
-
 import type { Metadata } from 'next'
 import ToastProvider from '@/provider/toast-provider'
-import Navbar from '@/components/ui/navbar/navbar'
+import { CurrencyProvider } from '@/provider/currencyContext'
 import Footer from '@/components/footer'
 
 import './globals.css'
@@ -24,21 +23,18 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-
       <html lang="en">
-
         <body className={font.className}>
-          <ToastProvider />
-          <ModalProvider />
           
-          {children}
-          
-          <Footer />
+          <CurrencyProvider>
+            <ToastProvider />
+            <ModalProvider />
+            {children}
+            <Footer />
+          </CurrencyProvider>
 
         </body>
-
       </html>
     </ClerkProvider>
-
   )
 }
