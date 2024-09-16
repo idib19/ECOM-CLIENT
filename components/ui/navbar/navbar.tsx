@@ -60,6 +60,7 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
                     >
                         <MainNav data={categories} />
                     </div>
+                    
                     <div className={" absolute right-14"}>
                     <NavbarActions />
                     </div>
