@@ -6,6 +6,7 @@ import Container from "@/components/ui/container";
 import {useState } from "react";
 import { Category } from "@/types";
 import { FaShoppingCart } from 'react-icons/fa';
+import NavbarActions from "@/components/ui/navbar/navbar-actions";
 
 export const revalidate = 0;
 
