@@ -31,29 +31,33 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
                         onClick={toggleDrawer}
                         className="lg:hidden absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            {isDrawerOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16m-7 6h7"
-                                />
-                            )}
-                        </svg>
+                        
+                        
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                {isDrawerOpen ? (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                ) : (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M4 6h16M4 12h16m-7 6h7"
+                                    />
+                                )}
+                            </svg>
+                     
+
                     </button>
                     <div
                         className={`lg:flex  lg:w-full ${isDrawerOpen ? " block bg-white z-10 text-black absolute right-0 top-20 py-4 w-60 h-screen" : "hidden relative"}`}
@@ -64,8 +68,12 @@ const Navbar = ({ categories }: { categories: Category[] }) => {
                     <div className={" absolute right-14"}>
                     <NavbarActions />
                     </div>
+
+
                     <div className={" absolute right-36"}>
+                    <Link href="/orders">
                     <FaShoppingCart size={24} /> 
+                    </Link>
                     </div>
                     
                 </div>

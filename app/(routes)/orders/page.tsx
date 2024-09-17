@@ -7,8 +7,6 @@ const OrdersPage = async () => {
 
     const orders = await getUserOrders(userId);
 
-    console.log(orders)
-
     // Upon receiving the order data, use JavaScript's sorting methods (e.g., Array.prototype.sort) to sort the order array by the createdAt property in descending order.
     // This might be suitable for a small number of orders.
 
