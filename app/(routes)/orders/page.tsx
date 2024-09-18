@@ -3,7 +3,7 @@ import { getUserOrders } from "@/actions/get-orders";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-const OrdersPage = async () => { 
+const OrdersPage = async () => {
 
     const { userId } = auth();
 
