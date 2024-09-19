@@ -14,7 +14,6 @@ interface OrderDetailsProps {
 export const OrderDetailsPage: React.FC<OrderDetailsProps> = ({ order }) => { 
 
     // Calculate total cost using reduce()
-    const totalCost = order?.orderItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
     return (
         <main className="flex flex-col gap-8 p-4 md:p-6">
