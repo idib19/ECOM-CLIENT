@@ -8,6 +8,7 @@ interface OrderPageProps {
 }
 
 const OrdersList: React.FC<OrderPageProps> = ({ data }) => {
+ 
     // format date
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
@@ -19,6 +20,10 @@ const OrdersList: React.FC<OrderPageProps> = ({ data }) => {
             minute: '2-digit'
         });
     };
+
+    if (data.length === 0) {
+        return <div className="text-center text-gray-500">Aucune commande trouvée</div>;
+    }
 
     return (
         <div >
