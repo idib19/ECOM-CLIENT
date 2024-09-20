@@ -19,7 +19,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
     const cart = useCart();
 
 
-    // static attributes : colors and sizes 
+    // static attributes : colors and sizes we need to fetch this from the database and make it dynamic for each product
 
     const availableSizes = ['S', 'M', 'L', 'XL'];
     const availableColors = ['#FFFFFF', '#00FF00', '#0000FF', '#FFFF00']; // Example colors
