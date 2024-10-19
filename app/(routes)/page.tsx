@@ -23,7 +23,7 @@ const HomePage = async () => {
     // 1- IDENTIDIER LA BOUTIQUE EN QUESTION
     // 2- RECUPERER LES DONNEES DE LA BOUTIQUE EN QUESTION { BILLBOARD + PRODUITS } 
     
-    const billboard = await getBillboard("d59529b7-1e56-4302-94e3-1aa7a54ba47c");
+    const billboard = await getBillboard("9da5263d-e533-4202-9351-296886355c74");
     const products = await getProducts({ isFeatured: true });
 
     
