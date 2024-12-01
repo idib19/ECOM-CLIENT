@@ -15,9 +15,11 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
-    // fetching all the prpoducts + their sepecific options (sizes & colors)
+    // fetches all the prpoducts + their sepecific options (sizes)
+    // todo: add to prouct their variants (sizes & colors) + quantity 
     const product = await getProduct(params.productId)
 
+    console.log(product)
 
     // We retrieve all the products of the same category for the ProductList components
     const suggestedProducts = await getProducts({ categoryId: product?.category?.id })
