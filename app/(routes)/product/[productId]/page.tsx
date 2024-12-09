@@ -17,12 +17,11 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
     // fetches all the prpoducts + their sepecific options (sizes)
     // todo: add to prouct their variants (sizes & colors) + quantity 
-    const product = await getProduct(params.productId)
+    const productData = await getProduct(params.productId)
 
-    console.log(product)
 
     // We retrieve all the products of the same category for the ProductList components
-    const suggestedProducts = await getProducts({ categoryId: product?.category?.id })
+    const suggestedProducts = await getProducts({ categoryId: productData?.category?.id })
 
 
     return (
@@ -30,9 +29,9 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <Container>
                 <div className="px-4 py-10 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-                        <Gallery images={product.images} />
+                        <Gallery images={productData.images} />
                         <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-                            <Info data={product} />
+                            <Info productData={productData} />
                         </div>
                     </div>
                     <hr className="my-10" />

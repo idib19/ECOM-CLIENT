@@ -7,11 +7,27 @@ export interface Product {
     size: Size;
     color: Color;
     images: Image[]
+    variants: Variant[]
 };
+
+type AttributeValue = {
+    name: string;
+    value: string;
+  };
+  
+  type Attribute = {
+    attributeValue: AttributeValue;
+  };
+  
+  type Variant = {
+    stockQuantity: number;
+    attributes: Attribute[];
+  };
+
 // Product variant object spec
 export interface Options {
     size: string;
-    color: string;
+    color?: string;
 }
 
 export interface CartItems {
